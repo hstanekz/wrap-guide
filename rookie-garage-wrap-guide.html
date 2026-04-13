@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rookie Garage — Beginner's Wrap Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0c0c0c;
+  --carbon: #131416;
+  --steel: #1c1e22;
+  --border: rgba(255,255,255,0.07);
+  --accent: #e8ff00;
+  --accent-dim: rgba(232,255,0,0.12);
+  --accent2: #ff6b2b;
+  --white: #f0efe8;
+  --gray: #666870;
+  --muted: #3a3c42;
+  --light: #b0b3ba;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── HERO ── */
+.hero {
+  padding: 64px 24px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(232,255,0,0.09) 0%, transparent 60%),
+    repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.008) 60px, rgba(255,255,255,0.008) 61px);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-family: 'DM Sans', monospace;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 12vw, 96px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  position: relative;
+}
+
+.hero h1 span { color: var(--accent); }
+
+.hero-sub {
+  font-size: 15px;
+  color: var(--light);
+  font-weight: 300;
+  max-width: 480px;
+  margin: 20px auto 0;
+  line-height: 1.7;
+}
+
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.hero-badge {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  color: var(--light);
+}
+
+/* ── NAV ── */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(12,12,12,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sticky-nav::-webkit-scrollbar { display: none; }
+
+.nav-inner {
+  display: flex;
+  gap: 0;
+  min-width: max-content;
+  padding: 0 16px;
+}
+
+.nav-inner a {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding: 14px 16px;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-inner a:hover {
+  color: var(--white);
+  text-decoration: none;
+  border-bottom-color: var(--accent);
+}
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── SECTION ── */
+.section {
+  padding: 56px 0 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.section-title-wrap {}
+
+.section-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1;
+}
+
+/* ── STEPS ── */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  background: var(--carbon);
+  padding: 20px;
+  align-items: start;
+}
+
+.step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.step-content {}
+
+.step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
+.step-body {
+  font-size: 13px;
+  color: var(--light);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.step-body strong { color: var(--white); font-weight: 500; }
+
+.step-tip {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--accent-dim);
+  border-left: 2px solid var(--accent);
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.step-optional {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+  border: 1px solid var(--muted);
+  padding: 2px 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+/* ── MATERIALS GRID ── */
+.materials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+@media (max-width: 500px) {
+  .materials-grid { grid-template-columns: 1fr; }
+}
+
+.material-card {
+  background: var(--carbon);
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.material-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+.material-card.cast::before { background: var(--accent); }
+.material-card.calendered::before { background: var(--accent2); }
+.material-card.ppf::before { background: #4eb8ff; }
+.material-card.tpu::before { background: #b07cff; }
+
+.mat-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.cast .mat-label { color: var(--accent); }
+.calendered .mat-label { color: var(--accent2); }
+.ppf .mat-label { color: #4eb8ff; }
+.tpu .mat-label { color: #b07cff; }
+
+.mat-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.mat-body {
+  font-size: 12px;
+  color: var(--light);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.mat-tag {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  background: rgba(255,255,255,0.05);
+  color: var(--gray);
+  text-transform: uppercase;
+}
+
+/* ── TOOLS ── */
+.tools-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tool-row {
+  display: grid;
+  grid-template-columns: 28px 160px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  background: var(--carbon);
+  padding: 14px 18px;
+}
+
+@media (max-width: 540px) {
+  .tool-row { grid-template-columns: 24px 1fr auto; }
+  .tool-desc { display: none; }
+}
+
+.tool-icon { font-size: 16px; }
+.tool-name { font-size: 13px; font-weight: 500; color: var(--white); }
+.tool-desc { font-size: 12px; color: var(--gray); font-weight: 300; }
+.tool-brand {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.tool-section-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding: 10px 18px 6px;
+  background: var(--steel);
+  border-left: 2px solid var(--muted);
+}
+
+/* ── SIZE TABLE ── */
+.size-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.size-table th {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding: 10px 14px;
+  text-align: left;
+  background: var(--steel);
+  font-weight: 400;
+  border-bottom: 1px solid var(--border);
+}
+
+.size-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--light);
+  font-weight: 300;
+}
+
+.size-table tr:last-child td { border-bottom: none; }
+
+.size-table td:first-child { color: var(--white); font-weight: 500; }
+.size-table td:nth-child(2) {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+
+.size-table tr:hover td { background: var(--carbon); }
+
+/* ── PARTS TABLE ── */
+.parts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.parts-table th {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding: 10px 14px;
+  text-align: left;
+  background: var(--steel);
+  font-weight: 400;
+}
+
+.parts-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--light);
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.parts-table td:first-child { color: var(--white); font-weight: 500; font-size: 13px; }
+.parts-table td:nth-child(2) {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ── PROMO CARD ── */
+.promo-card {
+  background: var(--carbon);
+  border: 1px solid rgba(232,255,0,0.2);
+  padding: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.promo-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.promo-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--white);
+  letter-spacing: 0.04em;
+}
+
+.promo-sub {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+.promo-code {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  background: var(--accent-dim);
+  padding: 10px 24px;
+  border: 1px dashed rgba(232,255,0,0.3);
+}
+
+/* ── FAQ ── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.faq-item {
+  background: var(--carbon);
+}
+
+.faq-q {
+  padding: 16px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.faq-q::after {
+  content: '+';
+  font-size: 18px;
+  color: var(--accent);
+  font-weight: 300;
+  flex-shrink: 0;
+  margin-left: 12px;
+  transition: transform 0.2s;
+}
+
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+.faq-a {
+  font-size: 13px;
+  color: var(--light);
+  font-weight: 300;
+  line-height: 1.7;
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.open .faq-a {
+  max-height: 400px;
+  padding: 0 20px 16px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  padding: 48px 24px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.footer-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.footer-sub {
+  font-size: 12px;
+  color: var(--gray);
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.note-block {
+  background: var(--steel);
+  border-left: 2px solid var(--accent2);
+  padding: 12px 16px;
+  font-size: 12px;
+  color: var(--light);
+  margin-top: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.note-block strong { color: var(--white); font-weight: 500; }
+
+.divider-line {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">By Rookie Garage</div>
+  <h1>The Beginner's<br><span>Wrap Guide</span></h1>
+  <p class="hero-sub">Everything you need to know to wrap your first panel — materials, tools, prep, and process.</p>
+</div>
+
+<!-- NAV -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a href="#materials">Materials</a>
+    <a href="#how-much">How Much?</a>
+    <a href="#panel-sizes">Panel Sizes</a>
+    <a href="#prep">Prep</a>
+    <a href="#disassembly">Disassembly</a>
+    <a href="#wrapping">Wrapping</a>
+    <a href="#tools">Tools</a>
+    <a href="#shop">Shop</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- SECTION 1: MATERIALS -->
+<section id="materials" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Know Your Materials</div>
+        <div class="section-title">Film Types Explained</div>
+      </div>
+    </div>
+
+    <div class="materials-grid">
+
+
+      <div class="material-card calendered">
+        <div class="mat-label">Calendered Vinyl</div>
+        <div class="mat-name">Calendered Film</div>
+        <div class="mat-body">Thicker and stiffer than cast. More budget-friendly but harder to conform around tight curves. Better suited for flat panels like roofs, hoods, and doors. Lifespan around 3–5 years.</div>
+        <div class="mat-tag">Good for flat panels / budget builds</div>
+      </div>
+      <div class="material-card cast">
+        <div class="mat-label">Cast Vinyl</div>
+        <div class="mat-name">Cast Film</div>
+        <div class="mat-body">The gold standard for wrapping. Thinner and more conformable — wraps around curves, recesses, and complex shapes without tenting or lifting. Longer lifespan (5–7 years outdoors).</div>
+        <div class="mat-tag">Recommended for full wraps</div>
+      </div>
+      <div class="material-card ppf">
+        <div class="mat-label">Paint Protection Film</div>
+        <div class="mat-name">Color PPF</div>
+        <div class="mat-body">Urethane-based film that protects the paint underneath from rock chips and scratches. Thicker than vinyl. Self-healing properties on many products. Available in both clear and color options. Premium cost, premium protection.</div>
+        <div class="mat-tag">Best protection available</div>
+      </div>
+
+      <div class="material-card tpu">
+        <div class="mat-label">Thermoplastic Urethane</div>
+        <div class="mat-name">TPU / Clear PPF</div>
+        <div class="mat-body">The material used in most clear bra / paint protection applications. Highly elastic, extremely durable, self-healing on minor scratches when exposed to heat. Stays clear over time without yellowing on quality products.</div>
+        <div class="mat-tag">Clear protection bra</div>
+      </div>
+    </div>
+<div class="note-block" style="margin-top:12px;">
+  <strong>Typical material cost (full wrap):</strong> Pricing varies by brand and finish, but rough ranges are:
+  <br><br>
+  <strong>Calendered vinyl:</strong> $200–$350
+  <br>
+  <strong>Cast vinyl:</strong> $350–$700
+  <br>
+  <strong>Color PPF:</strong> $1,000–$1,400+
+  <br>
+  <strong>Clear PPF:</strong> $1,300–$1,600+
+  <br><br>
+  <span style="color:var(--gray);">Material cost only — install not included.</span>
+</div>
+
+    <div class="note-block" style="margin-top:2px;">
+      <strong>What does Rookie Garage use?</strong> Primarily color PPF from VVivid — their chrome red series is what kicked off 50M+ views. Code <strong>ROOKIE20</strong> gets you 20% off.
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: HOW MUCH WRAP -->
+<section id="how-much" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Sizing Guide</div>
+        <div class="section-title">How Much Wrap Do I Need?</div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--light);font-weight:300;margin-bottom:20px;line-height:1.7;">Vinyl wrap typically comes in 5ft-wide rolls. The lengths below are what you'll need for a full vehicle wrap. Always order 10–15% extra to account for overlap, mistakes, and re-dos.</p>
+
+    <table class="size-table">
+      <thead>
+        <tr>
+          <th>Vehicle Type</th>
+          <th>Roll Needed</th>
+          <th>Common Models</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Motorcycle</td>
+          <td>16ft × 5ft</td>
+          <td>Yamaha YZF-R1, Kawasaki Ninja, BMW S1000RR</td>
+        </tr>
+        <tr>
+          <td>Coupe</td>
+          <td>59ft × 5ft</td>
+          <td>BMW M2/M4, Mustang, Camaro, Porsche 911</td>
+        </tr>
+        <tr>
+          <td>Sedan</td>
+          <td>69ft × 5ft</td>
+          <td>BMW 3/5 Series, Tesla Model 3, Camry, Accord</td>
+        </tr>
+        <tr>
+          <td>Large Sedan</td>
+          <td>79ft × 5ft</td>
+          <td>BMW 7 Series, S-Class, Tesla Model S, Audi A8</td>
+        </tr>
+        <tr>
+          <td>Small SUV</td>
+          <td>79ft × 5ft</td>
+          <td>Toyota RAV4, Honda HR-V, Jeep Renegade</td>
+        </tr>
+        <tr>
+          <td>Pickup Truck</td>
+          <td>79ft × 5ft</td>
+          <td>F-150, Silverado 1500, Ram 1500, Tacoma</td>
+        </tr>
+        <tr>
+          <td>Large SUV</td>
+          <td>89ft × 5ft</td>
+          <td>Tahoe, Expedition, BMW X7, Land Rover, Audi Q7</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note-block">
+      <strong>Pro tip:</strong> If you're only wrapping individual panels (hood, roof, doors), check the panel sizes guide below — you'll need much less material.
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: PANEL SIZES -->
+<section id="panel-sizes" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Panel Reference</div>
+        <div class="section-title">Panel Sizes by Part</div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--light);font-weight:300;margin-bottom:20px;line-height:1.7;">Dimensions are approximate reference sizes. Actual measurements vary by make and model — always measure your specific car before ordering.</p>
+
+    <table class="parts-table">
+      <thead>
+        <tr>
+          <th>Panel</th>
+          <th>Approx. Size</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Hood</td><td>4ft × 5.3ft</td><td>Measure to the edge of any vents or scoops</td></tr>
+        <tr><td>Roof</td><td>5ft × 3.6ft</td><td>Panoramic roofs may require wider film</td></tr>
+        <tr><td>Front Door (each)</td><td>5ft × 4ft</td><td>Account for the door handle recess</td></tr>
+        <tr><td>Rear Door (each)</td><td>5ft × 3.6ft</td><td>Sedans only — coupes skip this</td></tr>
+        <tr><td>Front Fender (each)</td><td>5ft × 3.6ft</td><td>Complex shape — use cast film</td></tr>
+        <tr><td>Rear Fender (each)</td><td>5ft × 10.5ft</td><td>Largest panel on most sedans</td></tr>
+        <tr><td>Front Bumper</td><td>5ft × 10ft</td><td>High chip-risk area — consider PPF</td></tr>
+        <tr><td>Rear Bumper</td><td>5ft × 10ft</td><td>Remove taillights for clean wrap lines</td></tr>
+        <tr><td>Spoiler</td><td>5ft × 5ft</td><td>Flat — calendered film works fine here</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 4: PREP -->
+<section id="prep" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Before You Wrap</div>
+        <div class="section-title">Surface Prep Process</div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--light);font-weight:300;margin-bottom:20px;line-height:1.7;">This is the step most beginners skip — don't. Vinyl will stick to every piece of contamination on the surface and lift right off if the surface isn't clean. Take your time here.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Wash the Car</div>
+          <div class="step-body">A thorough car wash to remove loose dirt, dust, and debris. Pay extra attention to panel edges, door jambs, and any recesses where dirt collects. Let it dry fully before moving on.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Clay Bar Treatment <span class="step-optional">Optional but recommended</span></div>
+          <div class="step-body">If the paint feels rough or gritty after washing, use a <strong>clay bar</strong> with a lubrication spray. This removes embedded contaminants that washing can't reach — overspray, industrial fallout, tree sap. Run your fingers over the paint after claying — it should feel like glass.</div>
+          <div class="step-tip">Use Chemical Guys Clay Luber as your clay bar lubricant. Never clay a dry surface.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Isopropyl Alcohol Wipe-Down</div>
+          <div class="step-body">Wipe down the entire surface with <strong>70% isopropyl alcohol</strong> and a clean microfiber cloth. This removes wax, polish, and any oily residue that would prevent the vinyl from adhering. Work panel by panel — don't let the IPA evaporate before you wipe it off.</div>
+          <div class="step-tip">Use one fresh microfiber per panel. A dirty cloth will just redistribute the oils.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Tack Reducer / Panel Wipe <span class="step-optional">Optional</span></div>
+          <div class="step-body">After the IPA wipe, some wrappers do a final pass with a <strong>panel prep / tack reducer</strong>. This conditions the surface for vinyl adhesion and removes any final residue. Not always needed but useful on older paint or freshly polished surfaces.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-block">
+      <strong>Temperature matters:</strong> Ideal wrapping temperature is 60°F–90°F (15°C–32°C). Too cold and the film won't stretch. Too hot and it'll activate the adhesive too fast. Never wrap in direct sunlight.
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: DISASSEMBLY -->
+<section id="disassembly" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Optional but Worth It</div>
+        <div class="section-title">Disassembly Tips</div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--light);font-weight:300;margin-bottom:20px;line-height:1.7;">You don't have to disassemble anything to wrap — but removing certain parts gives you cleaner edges and a more professional result. Always look up your specific car on YouTube.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">—</div>
+        <div class="step-content">
+          <div class="step-title">Door Handles</div>
+          <div class="step-body">Most door handles pop off with a trim removal tool and a few clips. Removing them lets you wrap behind the handle for a seamless look instead of cutting around it. 10–15 minute job on most cars.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">—</div>
+        <div class="step-content">
+          <div class="step-title">Taillights (for rear bumper)</div>
+          <div class="step-body">Removing taillights before wrapping the rear bumper lets you tuck the vinyl behind the light housing for a factory-clean edge. Usually 3–4 bolts accessible from the trunk. Specific process varies by car — search "<strong>[your car model] taillight removal</strong>" on YouTube.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">—</div>
+        <div class="step-content">
+          <div class="step-title">Side Mirrors</div>
+          <div class="step-body">Mirror caps on most BMWs and modern cars pop off or unclip easily. Wrapping them off the car is significantly easier than trying to work around them. Look up your specific mirror style before attempting.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">—</div>
+        <div class="step-content">
+          <div class="step-title">Trim Pieces & Badges</div>
+          <div class="step-body">Plastic trim and badges can usually be removed with floss or fishing line to break the adhesive. Running it behind the badge and pulling side to side cuts cleanly. Use a plastic trim tool — never a metal screwdriver — to avoid scratching.</div>
+          <div class="step-tip">Warm the badge with a heat gun for 30 seconds first to soften the adhesive.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: WRAPPING PROCESS -->
+<section id="wrapping" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">The Main Event</div>
+        <div class="section-title">The Wrapping Process</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Measure and Cut Your Film</div>
+          <div class="step-body">Cut your film at least 3–4 inches larger than the panel on every side. You need this extra material to grip and stretch around edges. Don't cut to exact size before applying — you'll trim once it's on.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Use Magnets to Hold It</div>
+          <div class="step-body">Before peeling the liner, use <strong>wrap magnets</strong> to hold the film loosely in position over the panel. This lets you preview placement and get your alignment right before committing to the adhesive.</div>
+          <div class="step-tip">Magnetic holders are one of the best quality-of-life upgrades — working solo becomes much easier.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Peel and Apply</div>
+          <div class="step-body">Peel back about 6 inches of liner, align to your starting edge, and squeegee down with smooth overlapping strokes. Work from the center outward to push air bubbles to the edges. Use a felt-edge squeegee to avoid scratching the film.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Heat and Stretch Around Curves</div>
+          <div class="step-body">A <strong>heat gun</strong> is your best friend on curved surfaces and recesses. Heat the film until it becomes pliable, then gently stretch and squeegee it around the contour. Don't overheat — if the film turns white or bubbles, you've gone too far. Keep the gun moving.</div>
+          <div class="step-tip">After stretching with heat, hit the area again with heat and hold it — this relaxes the film's memory so it won't lift later.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Cut Your Edges</div>
+          <div class="step-body">Use a <strong>snitty / knifeless tape</strong> or a sharp knife to cut the excess. Knifeless tape gives the cleanest edge and eliminates the risk of cutting through to the paint. For tighter areas, a vinyl cutter pen works well. You can also use a <strong>Sharpie on the backing side</strong> to mark your cut line before applying.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Tuck and Wrap Edges</div>
+          <div class="step-body">For a professional finish, fold the film over edges and into door jambs rather than cutting at the edge. Heat the corner, stretch the film around, and squeegee it flat. This prevents lifting from wind and car washes.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <div class="step-title">Final Heat Pass</div>
+          <div class="step-body">Once the entire panel is done, do a final pass with the heat gun over the whole surface — especially edges, corners, and any stretched areas. This fully activates the adhesive and locks the film in place. This step is the difference between a wrap that lasts and one that lifts in a month.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: TOOLS -->
+<section id="tools" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">What I Actually Use</div>
+        <div class="section-title">Tools & What They Do</div>
+      </div>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-section-label">Prep Tools</div>
+
+      <div class="tool-row">
+        <div class="tool-icon">🧴</div>
+        <div class="tool-name">Isopropyl Alcohol 70%</div>
+        <div class="tool-desc">Removes wax, oils, and residue from paint before wrapping</div>
+        <div class="tool-brand">Amazon</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">🧽</div>
+        <div class="tool-name">Microfiber Cloths</div>
+        <div class="tool-desc">For IPA wipe-down — one per panel, always fresh</div>
+        <div class="tool-brand">Costco / Amazon</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">🧱</div>
+        <div class="tool-name">Clay Bar + Lubricant</div>
+        <div class="tool-desc">Removes embedded contaminants from paint surface</div>
+        <div class="tool-brand">Chemical Guys / Amazon</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">🔵</div>
+        <div class="tool-name">Painter's Tape (3M)</div>
+        <div class="tool-desc">Masking off areas and holding film while positioning</div>
+        <div class="tool-brand">ScotchBlue / Amazon</div>
+      </div>
+
+      <div class="tool-section-label">Application Tools</div>
+
+      <div class="tool-row">
+        <div class="tool-icon">🔥</div>
+        <div class="tool-name">Heat Gun</div>
+        <div class="tool-desc">Activates adhesive, helps film conform around curves</div>
+        <div class="tool-brand">Seekone / Amazon</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">🟦</div>
+        <div class="tool-name">Felt-Edge Squeegee</div>
+        <div class="tool-desc">Smooths film without scratching — the core wrapping tool</div>
+        <div class="tool-brand">Off-Wrap / Amazon</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">🟠</div>
+        <div class="tool-name">Hard Card Squeegee</div>
+        <div class="tool-desc">Tucks edges and works into tight recesses</div>
+        <div class="tool-brand">Off-Wrap / Amazon</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">🧲</div>
+        <div class="tool-name">Wrap Magnets</div>
+        <div class="tool-desc">Hold film in position while you align and apply solo</div>
+        <div class="tool-brand">Amazon</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">🪡</div>
+        <div class="tool-name">Knifeless / Finishline Tape</div>
+        <div class="tool-desc">Creates clean cut lines without a blade touching paint</div>
+        <div class="tool-brand">3M / Amazon</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">🔪</div>
+        <div class="tool-name">Snitty Cutter / Knife</div>
+        <div class="tool-desc">Precision trimming of excess vinyl</div>
+        <div class="tool-brand">NT Cutter / Amazon</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">🧤</div>
+        <div class="tool-name">Wrap Gloves</div>
+        <div class="tool-desc">Work vinyl without leaving fingerprints or scratches</div>
+        <div class="tool-brand">WrapGlove / Amazon</div>
+      </div>
+
+      <div class="tool-section-label">Complete Kits (Best Value)</div>
+
+      <div class="tool-row">
+        <div class="tool-icon">📦</div>
+        <div class="tool-name">Vinyl Wrap Tool Kit</div>
+        <div class="tool-desc">Everything you need in one kit — heat gun, squeegees, cutters</div>
+        <div class="tool-brand" style="color:var(--accent2);">Oshark — ROOKIE12</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-icon">📦</div>
+        <div class="tool-name">Window Tint Tool Kit</div>
+        <div class="tool-desc">Dedicated kit for tint installs — different squeegees needed</div>
+        <div class="tool-brand" style="color:var(--accent2);">Oshark — ROOKIE12</div>
+      </div>
+    </div>
+
+    <div class="note-block">
+      <strong>Just starting out?</strong> Grab one of the Oshark complete kits first — use code <strong>ROOKIE12</strong> for 5% off. It covers most of what you need without buying everything separately. You can upgrade individual tools as you go.
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: SHOP -->
+<section id="shop" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Where to Buy</div>
+        <div class="section-title">Shop With Discounts</div>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <div>
+        <div class="promo-label">VVivid Vinyl — US &amp; Global</div>
+        <div class="promo-title">20% Off All Wraps &amp; Color PPF</div>
+        <div class="promo-sub">Calendared vinyl, chrome, color PPF, and more. What I use on my M550 and F30.</div>
+      </div>
+      <div class="promo-code">ROOKIE20</div>
+    </div>
+
+    <div class="promo-card" style="margin-top:2px;border-color:rgba(255,107,43,0.2);">
+      <div>
+        <div class="promo-label" style="color:var(--accent2);">Oshark — Complete Tool Kits</div>
+        <div class="promo-title">5% Off Tool Kits</div>
+        <div class="promo-sub">Vinyl wrap kit and window tint kit — both 39-in-1 with everything you need to get started.</div>
+      </div>
+      <div class="promo-code" style="color:var(--accent2);background:rgba(255,107,43,0.08);border-color:rgba(255,107,43,0.3);">ROOKIE12</div>
+    </div>
+
+    <div style="margin-top:20px;font-size:12px;color:var(--gray);line-height:1.7;">
+      My full Amazon tool list (individual items like squeegees, heat guns, IPA, microfibers, magnets) is in my <a href="https://hoo.be/rookiegarage">link in bio</a> under "My Wrap Tools" and "My Tint Tools."
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: FAQ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">Common Questions</div>
+        <div class="section-title">FAQ</div>
+      </div>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Can I wrap over existing wrap or ceramic coating?</div>
+        <div class="faq-a">Over existing wrap — generally not recommended. Remove old wrap first for best adhesion. Over ceramic coating — also tricky. Ceramic creates a very low-surface-energy surface that vinyl doesn't bond well to. You'd need to use a primer or remove the ceramic first.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Cast vs calendered — which should I start with?</div>
+        <div class="faq-a">Start with cast. It's more forgiving — you can reposition it, stretch it around curves without it tearing, and it looks better. Calendered is cheaper but frustrating for beginners on anything other than flat panels.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long does vinyl wrap last?</div>
+        <div class="faq-a">Cast vinyl: 5–7 years outdoors with proper care. Calendered: 3–5 years. Color PPF: 7–10 years. All of these assume the car is washed regularly and not left in direct sun constantly. A garage makes a big difference.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the difference between PPF and vinyl wrap?</div>
+        <div class="faq-a">Vinyl wrap is primarily cosmetic — it changes the color and finish of your car. PPF (Paint Protection Film) is primarily protective — it guards against rock chips, scratches, and road debris. Color PPF does both, but it costs significantly more than regular vinyl. Clear PPF is invisible and purely protective.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need special tools for tinting vs wrapping?</div>
+        <div class="faq-a">Yes — tinting uses harder squeegees with less texture to avoid scratching the tint film, which is more delicate than vinyl. The prep process is similar but the application technique is different. Check out the Oshark window tint kit — it's what I use and comes with the right tools for the job.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I wash the car normally after wrapping?</div>
+        <div class="faq-a">Hand washing is best. Avoid high-pressure washes aimed at edges — they can lift the wrap over time. No automatic car washes with spinning brushes. A touchless wash is okay. Give it 24–48 hours after a fresh wrap before washing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the best first panel to practice on?</div>
+        <div class="faq-a">A roof or hood — large and mostly flat, which teaches you the fundamentals without dealing with complex curves. Avoid bumpers as your first attempt. Doors are decent too but the handle recess can be tricky at first.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-name">Rookie Garage</div>
+  <div class="footer-links">
+    <a href="https://tiktok.com/@rookie.garage">TikTok</a>
+    <a href="https://instagram.com/rookie.garage">Instagram</a>
+    <a href="https://youtube.com/@rookiegarageofficial">YouTube</a>
+  </div>
+  <div style="margin-top:20px;font-size:11px;color:var(--muted);letter-spacing:0.05em;">
+    rookiegarageofficial@gmail.com
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
